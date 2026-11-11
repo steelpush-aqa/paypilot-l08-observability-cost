@@ -304,3 +304,31 @@ docker compose --profile host run --rm eval-host
 
 Змінні й команди в нього ті самі, що в `eval`. Стенд на іншому порту — у
 `.env` задай `EVAL_STAND_URL=http://127.0.0.1:<порт>`.
+
+## L08 · Observability & Cost Report
+
+### Запуск
+```bash
+docker compose run --rm eval --set l05_dialogs --gate all --profile clean
+docker compose run --rm eval --set l05_dialogs --gate all --profile lesson-08
+```
+Друга модель: додати `--settings '{"model": "google/gemini-2.5-flash"}'`.
+
+### Бюджетні кейси (sets/l05_dialogs.jsonl)
+| id | Що ловить | identical_tool_calls_max | tokens_total | latency_ms | gate / runs |
+| --- | --- | --- | --- | --- | --- |
+| C07-BUDGET | D15 (replay, 7 кроків) | 1 | 72000 | 36000 | release / 5 |
+| D14-EMPTY-BUDGET | D14 (повтор на порожній результат) | 1 | — | — | daily / 1 |
+| DISPUTE-SHORT-BUDGET | короткий спір | 1 | 24000 | 14000 | release / 5 |
+| LIMITS-BUDGET | питання про ліміти | 1 | 17000 | 11000 | release / 5 |
+| STATEMENT-BUDGET | виписка | 1 | 13500 | 10500 | release / 5 |
+| FX-BUDGET | конвертація валют | 1 | 29000 | 18000 | release / 5 |
+
+### Прогони
+| Що | Профіль / модель | Звіт |
+| --- | --- | --- |
+| набір l05_dialogs | clean | reports/l05_dialogs-clean-*.json (6/6) |
+| набір l05_dialogs | lesson-08 | reports/l05_dialogs-lesson-08-*.json (4/6: C07 і D14-EMPTY падають) |
+| B4 | haiku 5.5, gemini 2.5 flash | l08/b4.json |
+
+Звіт: `l08/observability-cost-report.md` (заповнений) і `l08/observability-cost-report.template.md` (порожня форма).
