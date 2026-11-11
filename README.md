@@ -319,7 +319,7 @@ docker compose run --rm eval --set l05_dialogs --gate all --profile lesson-08
 | --- | --- | --- | --- | --- | --- |
 | C07-BUDGET | D15 (replay, 7 кроків) | 1 | 72000 | 36000 | release / 5 |
 | D14-EMPTY-BUDGET | D14 (повтор на порожній результат) | 1 | — | — | daily / 1 |
-| DISPUTE-SHORT-BUDGET | короткий спір | 1 | 24000 | 14000 | release / 5 |
+| DISPUTE-SHORT-BUDGET | короткий спір | 1 | 27000 | 16000 | release / 5 |
 | LIMITS-BUDGET | питання про ліміти | 1 | 17000 | 11000 | release / 5 |
 | STATEMENT-BUDGET | виписка | 1 | 13500 | 10500 | release / 5 |
 | FX-BUDGET | конвертація валют | 1 | 29000 | 18000 | release / 5 |
