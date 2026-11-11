@@ -1,0 +1,340 @@
+{
+  "prompt_version": "base.v1",
+  "set_hash": "0c2e0780084e",
+  "profile": "lesson-08",
+  "judge_model": "not-used",
+  "rubric_version": "rubric.v1",
+  "elapsed": 342.2,
+  "set": "l05_dialogs",
+  "gate": "all",
+  "ran_at": "2026-11-11T08:11:22.702140+00:00",
+  "passed": 4,
+  "total": 6,
+  "skipped": 0,
+  "by_layer": {
+    "memory": {
+      "passed": 4,
+      "total": 6
+    }
+  },
+  "coverage": {
+    "cases": 6,
+    "layers": {
+      "memory": 6
+    },
+    "oracles": {
+      "human": 6
+    },
+    "sources": {
+      "L08 baseline 2026-11-10, haiku 5.5": 6
+    },
+    "severities": {
+      "high": 1,
+      "low": 3,
+      "medium": 2
+    },
+    "ladder_levels": [
+      2
+    ],
+    "gates": {
+      "daily": 1,
+      "release": 5
+    },
+    "human_oracle_pct": 100.0,
+    "severity_filled_pct": 100.0
+  },
+  "cases": [
+    {
+      "skipped": false,
+      "id": "C07-BUDGET",
+      "layer": "memory",
+      "oracle": "human",
+      "severity": "medium",
+      "gate": "release",
+      "runs": 5,
+      "verdict": {
+        "passed": false,
+        "level": 2,
+        "assertion": "budget",
+        "detail": "median tokens 82694 > 72000 (per run: tokens [86099, 72162, 82694, 87126, 74305], identical calls [1, 1, 1, 1, 1], latency [26004, 24004, 26595, 25139, 23662]ms)"
+      },
+      "answers": [
+        "I've opened the dispute.\n\n- **Dispute ID:** 1\n- **Transaction:** TX-0401, TechMart Online, 20 July 2026\n- **Amount:** 240.00 EUR\n- **Reason:** duplicate_charge\n- **Status:** Open\n\nNext steps:\n- The bank may ask you for supporting evidence, such as an order confirmation, a delivery record, or correspondence with TechMart. You would have **7 calendar days** to provide it, or the case will be decline",
+        "The dispute is open.\n\n- **Dispute ID:** 1\n- **Transaction:** TX-0401, TechMart Online, 2026-07-20\n- **Amount:** EUR 240.00\n- **Reason:** Duplicate charge\n- **Status:** Open\n\nThe case may ask for supporting evidence, such as an order confirmation, a delivery record, or merchant correspondence. If you don't supply requested evidence within 7 calendar days, the case is declined. Please gather those d",
+        "The dispute is already open, so I haven't opened a second one. Here's where it stands:\n\n- **Dispute ID:** 1\n- **Transaction:** TX-0401, €240.00, TechMart Online, 20 July 2026\n- **Reason code:** duplicate_charge\n- **Status:** open\n\nOpening a duplicate would not add anything and could complicate the case. If you'd like an update on the review, or you're asked for evidence, I can help with that. I ca",
+        "The dispute is open.\n\n- **Dispute ID:** 1\n- **Transaction:** TX-0401, TechMart Online, 20 July 2026\n- **Amount:** EUR 240.00\n- **Reason:** duplicate_charge\n- **Status:** Open\n\nPlease keep your order confirmations and any merchant correspondence ready. If the review asks for evidence, you have 7 calendar days to supply it, or the case will be declined. Verta will send you a notification on each sta",
+        "I've opened the dispute.\n\n- **Dispute ID:** 1\n- **Transaction:** TX-0401, TechMart Online, 2026-07-20\n- **Amount:** EUR 240.00\n- **Reason:** Duplicate charge\n- **Status:** Open\n\nPlease keep your order confirmations and any correspondence with TechMart Online ready. If evidence is requested, you have 7 calendar days to supply it, or the case will be declined."
+      ],
+      "latency_ms": 23662,
+      "tokens": 76868,
+      "tool_calls": [
+        {
+          "name": "create_dispute",
+          "arguments": {
+            "transaction_id": "TX-0401",
+            "reason_code": "duplicate_charge",
+            "amount": 240,
+            "currency": "EUR"
+          },
+          "result": {
+            "dispute_id": 1,
+            "status": "open"
+          }
+        }
+      ]
+    },
+    {
+      "skipped": false,
+      "id": "D14-EMPTY-BUDGET",
+      "layer": "memory",
+      "oracle": "human",
+      "severity": "high",
+      "gate": "daily",
+      "runs": 1,
+      "verdict": {
+        "passed": false,
+        "level": 2,
+        "assertion": "budget",
+        "detail": "identical tool calls 8 > 1 (per run: tokens [33970], identical calls [8], latency [18877]ms)"
+      },
+      "answers": [
+        "I couldn't retrieve any transactions for your EUR account (ACC-1004). The system returned an empty list each time I checked, so I can't tell whether you have no recent activity or the transaction data is temporarily unavailable.\n\nYour current balance is **EUR 145,000.00**.\n\nNext steps you could take:\n- **Try again later.** The transaction feed may recover.\n- **Ask for a human agent.** I can escala"
+      ],
+      "latency_ms": 18877,
+      "tokens": 33970,
+      "tool_calls": [
+        {
+          "name": "get_account",
+          "arguments": {},
+          "result": {
+            "customer": {
+              "id": "CUS-0003",
+              "name": "Clara Fischer",
+              "tier": "tier3"
+            },
+            "accounts": [
+              {
+                "id": "ACC-1004",
+                "customer_id": "CUS-0003",
+                "currency": "EUR",
+                "balance": 145000.0,
+                "tier": "tier3",
+                "holder": "Clara Fischer"
+              }
+            ]
+          }
+        },
+        {
+          "name": "get_transactions",
+          "arguments": {
+            "account_id": "ACC-1004"
+          },
+          "result": {
+            "transactions": []
+          }
+        },
+        {
+          "name": "get_transactions",
+          "arguments": {
+            "account_id": "ACC-1004"
+          },
+          "result": {
+            "transactions": []
+          }
+        },
+        {
+          "name": "get_transactions",
+          "arguments": {
+            "account_id": "ACC-1004"
+          },
+          "result": {
+            "transactions": []
+          }
+        },
+        {
+          "name": "get_transactions",
+          "arguments": {
+            "account_id": "ACC-1004"
+          },
+          "result": {
+            "transactions": []
+          }
+        },
+        {
+          "name": "get_transactions",
+          "arguments": {
+            "account_id": "ACC-1004"
+          },
+          "result": {
+            "transactions": []
+          }
+        },
+        {
+          "name": "get_transactions",
+          "arguments": {
+            "account_id": "ACC-1004"
+          },
+          "result": {
+            "transactions": []
+          }
+        },
+        {
+          "name": "get_transactions",
+          "arguments": {
+            "account_id": "ACC-1004"
+          },
+          "result": {
+            "transactions": []
+          }
+        },
+        {
+          "name": "get_transactions",
+          "arguments": {
+            "account_id": "ACC-1004"
+          },
+          "result": {
+            "transactions": []
+          }
+        }
+      ]
+    },
+    {
+      "skipped": false,
+      "id": "DISPUTE-SHORT-BUDGET",
+      "layer": "memory",
+      "oracle": "human",
+      "severity": "medium",
+      "gate": "release",
+      "runs": 5,
+      "verdict": {
+        "passed": true,
+        "level": 2,
+        "assertion": "budget",
+        "detail": "per run: tokens [24974, 19763, 19917, 19465, 19367], identical calls [1, 1, 1, 1, 1], latency [12134, 9425, 9346, 9801, 10447]ms"
+      },
+      "answers": [
+        "I've opened the dispute.\n\n- **Dispute ID:** 1\n- **Status:** Open\n- **Transaction:** TX-0202, CloudServe Subscription, USD 89.99 on 2026-09-08 (account ACC-1003)\n- **Reason:** Unauthorized debit\n- **Filing deadline for this reason:** 2026-11-03\n\nYour account balance was not changed by this filing. Any refund depends on the outcome of the dispute review, which I can't predict or speed up.\n\nIs there ",
+        "The dispute is open.\n\n- **Dispute ID:** 1\n- **Transaction:** TX-0202, CloudServe Subscription\n- **Amount:** USD 89.99\n- **Reason:** unauthorized debit\n- **Status:** open\n\nI can't tell you from here how long the investigation will take or what the outcome will be. If you'd like help with the FlightHub Booking charge (TX-0204, USD 450.00), or if you'd like to speak to a human agent, tell me.",
+        "The dispute is open.\n\n- **Dispute ID:** 1\n- **Transaction:** TX-0202, CloudServe Subscription, USD 89.99, 8 September 2026\n- **Reason:** Unauthorized debit\n- **Status:** Open\n\nI can't see from here what happens after this, so I can't give you a timeline for a decision. If you suspect someone has accessed your account or card, tell me and I can escalate that to a human agent.",
+        "The dispute is open.\n\n- **Dispute ID:** 1\n- **Transaction:** TX-0202, CloudServe Subscription, 89.99 USD, 2026-09-08\n- **Reason:** Unauthorized debit\n- **Status:** Open\n\nI can't say from here how long the review will take. If you have any other concerns about your account, let me know.",
+        "The dispute is open.\n\n- **Dispute ID:** 1\n- **Transaction:** TX-0202, USD 89.99, CloudServe Subscription, 8 September 2026\n- **Reason:** Unauthorized debit\n- **Status:** Open\n\nI can't tell you from here how long the review will take or what the outcome will be. If you want to be sure the account is protected from further unauthorized activity, I can escalate this to a human agent."
+      ],
+      "latency_ms": 10447,
+      "tokens": 48494,
+      "tool_calls": [
+        {
+          "name": "create_dispute",
+          "arguments": {
+            "transaction_id": "TX-0202",
+            "reason_code": "unauthorized_debit",
+            "amount": 89.99,
+            "currency": "USD"
+          },
+          "result": {
+            "dispute_id": 1,
+            "status": "open"
+          }
+        }
+      ]
+    },
+    {
+      "skipped": false,
+      "id": "LIMITS-BUDGET",
+      "layer": "memory",
+      "oracle": "human",
+      "severity": "low",
+      "gate": "release",
+      "runs": 5,
+      "verdict": {
+        "passed": true,
+        "level": 2,
+        "assertion": "budget",
+        "detail": "per run: tokens [16460, 16561, 16400, 16560, 16436], identical calls [1, 1, 1, 1, 1], latency [7196, 7968, 7474, 8057, 7888]ms"
+      },
+      "answers": [
+        "So far this month you have used EUR 35,334 of your EUR 1,000,000 monthly limit, leaving EUR 964,666 remaining. These figures are as of 2026-09-15.",
+        "So far this month you have used **EUR 35,334.00** of your EUR 1,000,000 monthly limit, leaving **EUR 964,666.00** remaining. This figure is as of 15 September 2026.",
+        "You have used EUR 35,334 of your EUR 1,000,000 monthly limit this month, leaving EUR 964,666.",
+        "So far this month you have used EUR 35,334 of your EUR 1,000,000 monthly limit, leaving EUR 964,666. This is as of 2026-09-15, per the limit data on file.",
+        "You have used EUR 35,334 of your EUR 1,000,000 monthly limit so far this month (as of 2026-09-15), leaving EUR 964,666 remaining."
+      ],
+      "latency_ms": 7888,
+      "tokens": 18068,
+      "tool_calls": []
+    },
+    {
+      "skipped": false,
+      "id": "STATEMENT-BUDGET",
+      "layer": "memory",
+      "oracle": "human",
+      "severity": "low",
+      "gate": "release",
+      "runs": 5,
+      "verdict": {
+        "passed": true,
+        "level": 2,
+        "assertion": "budget",
+        "detail": "per run: tokens [12720, 12529, 12432, 12410, 12376], identical calls [1, 1, 1, 1, 1], latency [7799, 8124, 7509, 6855, 7339]ms"
+      },
+      "answers": [
+        "By default, the statement covers **last month**. You can ask for a different period, but I can only send a period the system supports, and I don't have a list of those options. If you name the period you want, I'll pass it along, and if it isn't supported the send will fail and I'll tell you.\n\nPlease also tell me the email address to send it to, or let me know if you'd like to be escalated to a hu",
+        "By default, the statement covers last month. If you need a different period, tell me which one (for example, a specific month or a date range), and I'll send that instead.\n\nOnce you've confirmed the period and whether you'd like me to escalate to a human agent or you'll provide the registered address, I can proceed.",
+        "The default is **last month**, the full calendar month before the current one. If you want a different period, tell me which months you need.\n\nPlease also send the email address registered to your account. I can't look it up, so I'll send the statement to the address you give me.",
+        "By default, the statement covers last month, the most recent full calendar month. If you need a different period, tell me which one (for example, a specific month or a date range), and I'll request that instead.\n\nOnce you confirm the period and the registered email address (or ask me to escalate), I'll send it.",
+        "If you don't specify otherwise, the statement will cover **last month**, the default period. If you want a different period, tell me which one.\n\nBefore I send anything, I still need the email address registered to your account, as explained above."
+      ],
+      "latency_ms": 7339,
+      "tokens": 16540,
+      "tool_calls": []
+    },
+    {
+      "skipped": false,
+      "id": "FX-BUDGET",
+      "layer": "memory",
+      "oracle": "human",
+      "severity": "low",
+      "gate": "release",
+      "runs": 5,
+      "verdict": {
+        "passed": true,
+        "level": 2,
+        "assertion": "budget",
+        "detail": "per run: tokens [33204, 32404, 23442, 23207, 23259], identical calls [1, 1, 1, 1, 1], latency [12946, 16620, 13476, 12990, 12161]ms"
+      },
+      "answers": [
+        "Converting EUR 2,000 to USD would cost about **USD 19.57** in spread, and you would receive **USD 2,154.35**.\n\n**Quote breakdown (Tier 2, EUR → USD):**\n- Mid-market rate: 1 EUR = 1.086957 USD\n- Gross converted amount: 2,000 × 1.086957 = USD 2,173.91\n- Spread: 0.9% of USD 2,173.91 = **USD 19.57**\n- Final amount credited: USD 2,173.91 − 19.57 = **USD 2,154.35**\n\nWith EUR 800 of your EUR 1,000 allowa",
+        "Converting 2,000 EUR to USD would give you **2,154.35 USD**.\n\n- Mid-market rate: 1 EUR = 1.086957 USD\n- Gross amount: 2,000 EUR × 1.086957 = 2,173.91 USD\n- Spread (0.9%): 19.57 USD\n- **Final amount: 2,173.91 − 19.57 = 2,154.35 USD**\n\nThe allowance works as it did for the 1,000 EUR quote. You have 200 EUR of allowance left (800 of 1,000 used), so the 0.9% spread applies to the full 2,000 EUR.",
+        "Converting EUR 2,000 would give you **USD 2,154.35**.\n\n- **Mid-market rate:** 1 EUR = 1.086957 USD\n- **Gross amount:** EUR 2,000 × 1.086957 = USD 2,173.91\n- **Tier 2 spread:** 0.9% of USD 2,173.91 = **USD 19.57**\n- **Final amount:** USD 2,173.91 − USD 19.57 = **USD 2,154.35**\n\nThe quote again shows the free allowance was not applied. The spread is 0.9%, as before.\n\nI also need to correct my last r",
+        "Converting 2,000 EUR to USD would give you **2,154.35 USD**.\n\n- **Mid rate:** 1 EUR = 1.086957 USD\n- **Gross amount:** 2,000 × 1.086957 = 2,173.91 USD\n- **Spread (tier 2):** 0.9%, which is 19.57 USD\n- **Final amount:** 2,173.91 − 19.57 = **2,154.35 USD**\n\nAs with the 1,000 EUR quote, the quote shows €800 of the €1,000 free allowance already used and does not apply the remaining €200. The full 0.9%",
+        "Converting EUR 2,000 to USD would cost about **USD 19.57** in spread, and you would receive **USD 2,154.35**.\n\n- Mid-market rate: 1 EUR = 1.086957 USD\n- Gross converted amount: 2,000 × 1.086957 = USD 2,173.91\n- Spread: 0.9% of USD 2,173.91 = USD 19.57\n- Final amount: USD 2,173.91 − USD 19.57 = **USD 2,154.35**\n\nAs with the EUR 1,000 quote, the free allowance was not applied (`allowance_applied: fa"
+      ],
+      "latency_ms": 12161,
+      "tokens": 51389,
+      "tool_calls": [
+        {
+          "name": "quote_fx",
+          "arguments": {
+            "customer_id": "CUS-0002",
+            "amount": 2000,
+            "from_currency": "EUR",
+            "to_currency": "USD"
+          },
+          "result": {
+            "from_currency": "EUR",
+            "to_currency": "USD",
+            "amount": 2000,
+            "mid_rate": 1.086957,
+            "tier": "tier2",
+            "spread_pct": 0.9,
+            "allowance_total_eur": 1000,
+            "allowance_used_before_eur": 800.0,
+            "allowance_applied": false,
+            "gross_amount": 2173.913043,
+            "spread_amount": 19.565217,
+            "final_amount": 2154.347826
+          }
+        }
+      ]
+    }
+  ]
+}
